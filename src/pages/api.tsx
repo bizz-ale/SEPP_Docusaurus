@@ -17,7 +17,12 @@ export default function ApiPage(): JSX.Element {
             Cette page affiche la documentation OpenAPI/Swagger provenant de votre
             service à l'URL : <code>{swaggerJsonUrl}</code>
           </p>
-          <SwaggerUI url={swaggerJsonUrl} docExpansion="list" defaultModelsExpandDepth={0} />
+          <SwaggerUI
+            url={swaggerJsonUrl}
+            docExpansion="none"
+            defaultModelsExpandDepth={-1}
+            defaultModelExpandDepth={-1}
+          />
         </div>
       </div>
     </Layout>
