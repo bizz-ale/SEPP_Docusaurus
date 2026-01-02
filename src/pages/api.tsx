@@ -1,12 +1,14 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {SWAGGER_JSON_URL as ENV_SWAGGER_JSON_URL} from '../environment';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
 
 export default function ApiPage(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
-  const swaggerJsonUrl = (siteConfig.customFields?.swaggerJsonUrl as string) || '';
+  const swaggerJsonUrl =
+    ENV_SWAGGER_JSON_URL || (siteConfig.customFields?.swaggerJsonUrl as string) || '';
 
   return (
     <Layout title="API" description="Documentation API via Swagger UI">

@@ -1,4 +1,12 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+// Load environment variables from .env files when running Docusaurus locally
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const dotenv = require('dotenv');
+  dotenv.config();
+} catch (e) {
+  // ignore if dotenv is not available in the environment
+}
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -31,8 +39,9 @@ const config: Config = {
 
   // Custom fields for runtime usage
   customFields: {
-    apiBaseUrl: 'http://localhost:5001',
-    swaggerJsonUrl: 'http://localhost:5001/swagger/v1/swagger.json',
+    apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:5001',
+    swaggerJsonUrl:
+      (process.env.SWAGGER_JSON_URL as string) || 'http://localhost:5001/swagger/v1/swagger.json',
   },
 
   onBrokenLinks: 'throw',
